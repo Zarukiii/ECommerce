@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ECommerce.Domain.Entities;
+
+namespace ECommerce.Application.Interfaces.Queries
+{
+    public interface IProductQueryRepository
+    {
+        Task<IEnumerable<Product>> GetAllProducts();
+        Task<Product?> GetProductById(int id);
+    }
+}
