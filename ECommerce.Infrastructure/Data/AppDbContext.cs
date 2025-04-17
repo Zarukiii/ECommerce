@@ -16,13 +16,19 @@ namespace ECommerce.Infrastructure.Data
         {
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.ParentCategory)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.ParentCategoryId);
+                .WithMany(c => c.ParentCategoryProducts)
+                .HasForeignKey(p => p.ParentCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.SubCategory)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.SubCategoryId);
+                .WithMany(c => c.SubCategoryProducts)
+                .HasForeignKey(p => p.SubCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Status)
+                .HasConversion<string>();
         }
     }
 }
