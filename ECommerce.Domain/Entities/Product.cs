@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECommerce.Domain.Entities.Common;
+﻿using ECommerce.Domain.Entities.Common;
 using ECommerce.Domain.Enums;
 
 namespace ECommerce.Domain.Entities
@@ -19,8 +14,8 @@ namespace ECommerce.Domain.Entities
         public double Price { get; set; }
         public int StockQuantity { get; set; }
         public string ImageUrl { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+        public DateTime DateUpdated { get; set; } = DateTime.UtcNow;
         public Status Status { get; set; }
         public bool isDeleted { get; set; }
     }
