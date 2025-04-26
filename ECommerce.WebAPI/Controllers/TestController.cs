@@ -2,11 +2,12 @@
 using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Application.Services.ProductServices.Commands;
+using ECommerce.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.WebAPI.Controllers
 {
-    [Route("api/")]
+    [Route("api/[controller]")]
     [ApiController]
     public class TestController(IProductQueryRepository productQueryRepository, IProductCommandRepository productCommandRepository, IProductCommandService productService) : ControllerBase
     {
@@ -14,14 +15,14 @@ namespace ECommerce.WebAPI.Controllers
         private readonly IProductCommandRepository _productCommandRepository = productCommandRepository;
         private readonly IProductCommandService _productService = productService;
 
-        [HttpGet("AllProducts")]
+        [HttpGet("[action]")]
         public async Task<ActionResult> GetAllProducts()
         {
             var products = await _productQueryRepository.GetAllProducts();
             return Ok(products);
         }
 
-        [HttpGet("ProductByID")]
+        [HttpGet("[action]")]
         public async Task<ActionResult> GetProductById(int id)
         {
             var product = await _productQueryRepository.GetProductById(id);
@@ -34,12 +35,20 @@ namespace ECommerce.WebAPI.Controllers
             return Ok(product);
         }
 
-        [HttpPost("CreateProduct")]
+        [HttpPost("[action]")]
         public async Task<ActionResult> CreateProduct([FromBody] ProductDto productDto)
         {
             await _productService.CreateProduct(productDto);
 
             return CreatedAtAction(nameof(CreateProduct), productDto);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult> UpdateProduct([FromBody] ProductDto product, int id)
+        {
+            await _productService.UpdateProduct(product, id);
+
+            return Ok(product);
         }
     }
 }

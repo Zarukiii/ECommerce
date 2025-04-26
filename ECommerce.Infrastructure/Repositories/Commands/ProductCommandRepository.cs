@@ -14,5 +14,14 @@ namespace ECommerce.Infrastructure.Repositories.Commands
 
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task UpdateProductAsync(Product product)
+        {
+            _appDbContext.Products.Update(product);
+
+            product.DateUpdated = DateTime.Now;
+
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }
