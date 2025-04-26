@@ -1,6 +1,5 @@
 ﻿using ECommerce.Domain.Entities;
 using ECommerce.Domain.Entities.Common;
-using ECommerce.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Data

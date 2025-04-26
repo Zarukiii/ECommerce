@@ -1,8 +1,8 @@
 ﻿using ECommerce.Application.Dto;
 
-namespace ECommerce.Application.Services.ProductServices
+namespace ECommerce.Application.Services.ProductServices.Commands
 {
-    public interface IProductService
+    public interface IProductCommandService
     {
         public Task CreateProduct(ProductDto productDto);
     }

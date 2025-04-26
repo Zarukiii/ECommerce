@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECommerce.Application.Dto;
+﻿using ECommerce.Application.Dto;
 using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Domain.Entities;
 
-namespace ECommerce.Application.Services.ProductServices
+namespace ECommerce.Application.Services.ProductServices.Commands
 {
-    public class ProductService(IProductCommandRepository productCommandRepository) : IProductService
+    public class ProductCommandService(IProductCommandRepository productCommandRepository) : IProductCommandService
     {
         private readonly IProductCommandRepository _productCommandRepository = productCommandRepository;
         public async Task CreateProduct(ProductDto productDto)

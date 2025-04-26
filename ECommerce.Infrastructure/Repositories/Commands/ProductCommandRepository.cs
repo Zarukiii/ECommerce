@@ -1,8 +1,5 @@
-﻿using System.Diagnostics;
-using ECommerce.Application.Dto;
-using ECommerce.Application.Interfaces.Commands;
+﻿using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Domain.Entities;
-using ECommerce.Domain.Enums;
 using ECommerce.Infrastructure.Data;
 
 namespace ECommerce.Infrastructure.Repositories.Commands

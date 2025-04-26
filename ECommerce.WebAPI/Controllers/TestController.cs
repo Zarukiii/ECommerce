@@ -1,20 +1,18 @@
 ﻿using ECommerce.Application.Dto;
 using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Application.Interfaces.Queries;
-using ECommerce.Application.Services.ProductServices;
-using ECommerce.Domain.Entities;
-using ECommerce.Domain.Enums;
+using ECommerce.Application.Services.ProductServices.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.WebAPI.Controllers
 {
     [Route("api/")]
     [ApiController]
-    public class TestController(IProductQueryRepository productQueryRepository, IProductCommandRepository productCommandRepository, IProductService productService) : ControllerBase
+    public class TestController(IProductQueryRepository productQueryRepository, IProductCommandRepository productCommandRepository, IProductCommandService productService) : ControllerBase
     {
         private readonly IProductQueryRepository _productQueryRepository = productQueryRepository;
         private readonly IProductCommandRepository _productCommandRepository = productCommandRepository;
-        private readonly IProductService _productService = productService;
+        private readonly IProductCommandService _productService = productService;
 
         [HttpGet("AllProducts")]
         public async Task<ActionResult> GetAllProducts()
