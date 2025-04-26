@@ -33,9 +33,7 @@ namespace ECommerce.Application.Services.ProductServices.Commands
             var product = await _productQueryRepository.GetProductById(id);
 
             if (product == null)
-            {
                 throw new KeyNotFoundException();
-            }
 
             product.Name = productDto.Name;
             product.ParentCategoryId = productDto.ParentCat;
@@ -46,6 +44,16 @@ namespace ECommerce.Application.Services.ProductServices.Commands
             product.Status = productDto.Status;
 
             await _productCommandRepository.UpdateProductAsync(product);
+        }
+
+        public async Task DeleteProduct(int id)
+        {
+            var product = await _productQueryRepository.GetProductById(id);
+
+            if (product == null)
+                throw new KeyNotFoundException();
+
+            await _productCommandRepository.DeleteProductAsync(product.Id);
         }
     }
 }

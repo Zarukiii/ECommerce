@@ -6,5 +6,6 @@ namespace ECommerce.Application.Services.ProductServices.Commands
     {
         public Task CreateProduct(ProductDto productDto);
         public Task UpdateProduct(ProductDto productDto, int id);
+        public Task DeleteProduct(int id);
     }
 }

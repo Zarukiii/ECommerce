@@ -6,5 +6,6 @@ namespace ECommerce.Application.Interfaces.Commands
     {
         Task CreateProductAsync(Product product);
         Task UpdateProductAsync(Product product);
+        Task DeleteProductAsync(int id);
     }
 }
