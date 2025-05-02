@@ -2,6 +2,7 @@
 using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Application.Services.ProductServices.Commands;
+using ECommerce.Application.Services.ProductServices.Queries;
 using ECommerce.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,28 +10,28 @@ namespace ECommerce.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController(IProductQueryRepository productQueryRepository, IProductCommandRepository productCommandRepository, IProductCommandService productService) : ControllerBase
+    public class TestController(
+        IProductCommandService productCommandService,
+        IProductQueryService productQueryService) 
+        : ControllerBase
     {
-        private readonly IProductQueryRepository _productQueryRepository = productQueryRepository;
-        private readonly IProductCommandRepository _productCommandRepository = productCommandRepository;
-        private readonly IProductCommandService _productService = productService;
+        private readonly IProductCommandService _productCommandService = productCommandService;
+        private readonly IProductQueryService _productQueryService = productQueryService;
 
         [HttpGet("[action]")]
         public async Task<ActionResult> GetAllProducts()
         {
-            var products = await _productQueryRepository.GetAllProducts();
+            var products = await _productQueryService.GetAllProducts();
             return Ok(products);
         }
 
         [HttpGet("[action]")]
         public async Task<ActionResult> GetProductById(int id)
         {
-            var product = await _productQueryRepository.GetProductById(id);
+            var product = await _productQueryService.GetProductById(id);
 
             if (product == null)
-            {
                 return NotFound();
-            }
 
             return Ok(product);
         }
@@ -38,7 +39,7 @@ namespace ECommerce.WebAPI.Controllers
         [HttpPost("[action]")]
         public async Task<ActionResult> CreateProduct([FromBody] ProductDto productDto)
         {
-            await _productService.CreateProduct(productDto);
+            await _productCommandService.CreateProduct(productDto);
 
             return CreatedAtAction(nameof(CreateProduct), productDto);
         }
@@ -46,7 +47,10 @@ namespace ECommerce.WebAPI.Controllers
         [HttpPost("[action]")]
         public async Task<ActionResult> UpdateProduct([FromBody] ProductDto product, int id)
         {
-            await _productService.UpdateProduct(product, id);
+            if (id == null)
+                return NotFound();
+
+            await _productCommandService.UpdateProduct(product, id);
 
             return NoContent();
         }
@@ -54,7 +58,10 @@ namespace ECommerce.WebAPI.Controllers
         [HttpDelete("[action]")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            await _productCommandRepository.DeleteProductAsync(id);
+            if (id == null)
+                return NotFound();
+
+            await _productCommandService.DeleteProduct(id);
 
             return NoContent();
         }
