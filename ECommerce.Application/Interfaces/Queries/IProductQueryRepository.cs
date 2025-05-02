@@ -4,7 +4,7 @@ namespace ECommerce.Application.Interfaces.Queries
 {
     public interface IProductQueryRepository
     {
-        Task<IEnumerable<Product>> GetAllProducts();
-        Task<Product?> GetProductById(int id);
+        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<Product?> GetProductByIdAsync(int id);
     }
 }
