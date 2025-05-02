@@ -29,6 +29,9 @@ namespace ECommerce.Infrastructure.Repositories.Commands
         {
             var product = _appDbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
 
+            if (product == null)
+                throw new KeyNotFoundException();
+
             var productEntry = _appDbContext.Products.Entry(await product);
 
             productEntry.Property("isDeleted").CurrentValue = true;
