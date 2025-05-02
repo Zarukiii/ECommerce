@@ -9,19 +9,16 @@ namespace ECommerce.Infrastructure.Repositories.Queries
     {
         private readonly AppDbContext _appDbContext = appDbContext;
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             var products = await _appDbContext.Products.ToListAsync();
 
             return products;
         }
 
-        public async Task<Product?> GetProductById(int id)
+        public async Task<Product?> GetProductByIdAsync(int id)
         {
             var product = await _appDbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (product == null)
-                return null;
 
             return product;
         }
