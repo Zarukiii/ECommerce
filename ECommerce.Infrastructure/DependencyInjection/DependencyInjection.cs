@@ -20,6 +20,8 @@ namespace ECommerce.Infrastructure.DependencyInjection
             services.AddScoped<IProductCommandService, ProductCommandService>();
             services.AddScoped<IProductQueryService, ProductQueryService>();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddDbContext<AppDbContext>(options =>
             
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),

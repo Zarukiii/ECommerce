@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECommerce.Domain.Entities;
+﻿using ECommerce.Application.Dto;
 
 namespace ECommerce.Application.Services.ProductServices.Queries
 {
     public interface IProductQueryService
     {
-        public Task<IEnumerable<Product>> GetAllProducts();
-        public Task<Product> GetProductById(int id);
+        public Task<IEnumerable<ProductDto>> GetAllProducts();
+        public Task<ProductDto> GetProductById(int id);
     }
 }

@@ -17,8 +17,8 @@ namespace ECommerce.Application.Services.ProductServices.Commands
             var product = new Product
             {
                 Name = productDto.Name,
-                ParentCategoryId = productDto.ParentCat,
-                SubCategoryId = productDto.SubCat,
+                ParentCategoryId = productDto.ParentCategoryId,
+                SubCategoryId = productDto.SubCategoryId,
                 Price = productDto.Price,
                 StockQuantity = productDto.Stock,
                 ImageUrl = productDto.ImageUrl,
@@ -30,14 +30,14 @@ namespace ECommerce.Application.Services.ProductServices.Commands
 
         public async Task UpdateProduct(ProductDto productDto, int id)
         {
-            var product = await _productQueryRepository.GetProductById(id);
+            var product = await _productQueryRepository.GetProductByIdAsync(id);
 
             if (product == null)
                 throw new KeyNotFoundException();
 
             product.Name = productDto.Name;
-            product.ParentCategoryId = productDto.ParentCat;
-            product.SubCategoryId = productDto.SubCat;
+            product.ParentCategoryId = productDto.ParentCategoryId;
+            product.SubCategoryId = productDto.SubCategoryId;
             product.Price = productDto.Price;
             product.StockQuantity = productDto.Stock;
             product.ImageUrl = productDto.ImageUrl;
@@ -48,7 +48,7 @@ namespace ECommerce.Application.Services.ProductServices.Commands
 
         public async Task DeleteProduct(int id)
         {
-            var product = await _productQueryRepository.GetProductById(id);
+            var product = await _productQueryRepository.GetProductByIdAsync(id);
 
             if (product == null)
                 throw new KeyNotFoundException();
