@@ -1,6 +1,7 @@
 ﻿using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Application.Services.ProductServices.Commands;
+using ECommerce.Application.Services.ProductServices.Queries;
 using ECommerce.Infrastructure.Data;
 using ECommerce.Infrastructure.Repositories.Commands;
 using ECommerce.Infrastructure.Repositories.Queries;
@@ -17,6 +18,7 @@ namespace ECommerce.Infrastructure.DependencyInjection
             services.AddScoped<IProductQueryRepository, ProductQueryRepository>();
             services.AddScoped<IProductCommandRepository, ProductCommandRepository>();
             services.AddScoped<IProductCommandService, ProductCommandService>();
+            services.AddScoped<IProductQueryService, ProductQueryService>();
 
             services.AddDbContext<AppDbContext>(options =>
             
