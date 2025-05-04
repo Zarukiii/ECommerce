@@ -6,5 +6,6 @@ namespace ECommerce.Application.Interfaces.Queries
     {
         Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<Product?> GetProductByIdAsync(int id);
+        Task<IEnumerable<Product>> GetAllActiveAsync();
     }
 }

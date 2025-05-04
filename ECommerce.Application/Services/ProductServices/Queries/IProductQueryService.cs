@@ -6,5 +6,6 @@ namespace ECommerce.Application.Services.ProductServices.Queries
     {
         public Task<IEnumerable<ProductDto>> GetAllProducts();
         public Task<ProductDto> GetProductById(int id);
+        public Task<IEnumerable<ProductDto>> GetActiveProducts();
     }
 }

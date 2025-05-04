@@ -19,6 +19,13 @@ namespace ECommerce.WebAPI.Controllers
         private readonly IProductQueryService _productQueryService = productQueryService;
 
         [HttpGet("[action]")]
+        public async Task<ActionResult> GetAllActiveProducts()
+        {
+            var products = await _productQueryService.GetActiveProducts();
+            return Ok(products);
+        }
+
+        [HttpGet("[action]")]
         public async Task<ActionResult> GetAllProducts()
         {
             var products = await _productQueryService.GetAllProducts();
@@ -44,7 +51,7 @@ namespace ECommerce.WebAPI.Controllers
             return CreatedAtAction(nameof(CreateProduct), productDto);
         }
 
-        [HttpPost("[action]")]
+        [HttpPut("[action]")]
         public async Task<ActionResult> UpdateProduct([FromBody] ProductDto product, int id)
         {
             if (id == null)
