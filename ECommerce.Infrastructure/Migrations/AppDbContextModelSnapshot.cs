@@ -54,7 +54,6 @@ namespace ECommerce.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -71,7 +70,7 @@ namespace ECommerce.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StockQuantity")
+                    b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.Property<int>("SubCategoryId")

@@ -20,8 +20,7 @@ namespace ECommerce.Application.Services.ProductServices.Commands
                 ParentCategoryId = productDto.ParentCategoryId,
                 SubCategoryId = productDto.SubCategoryId,
                 Price = productDto.Price,
-                StockQuantity = productDto.Stock,
-                ImageUrl = productDto.ImageUrl,
+                Stock = productDto.Stock,
                 Status = productDto.Status
             };
 
@@ -39,9 +38,9 @@ namespace ECommerce.Application.Services.ProductServices.Commands
             product.ParentCategoryId = productDto.ParentCategoryId;
             product.SubCategoryId = productDto.SubCategoryId;
             product.Price = productDto.Price;
-            product.StockQuantity = productDto.Stock;
-            product.ImageUrl = productDto.ImageUrl;
+            product.Stock = productDto.Stock;
             product.Status = productDto.Status;
+            product.isDeleted = productDto.IsDeleted;
 
             await _productCommandRepository.UpdateProductAsync(product);
         }

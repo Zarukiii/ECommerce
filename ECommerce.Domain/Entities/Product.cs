@@ -10,7 +10,7 @@ namespace ECommerce.Domain.Entities
         public int ParentCategoryId { get; set; }
         public int SubCategoryId { get; set; }
         public double Price { get; set; }
-        public int StockQuantity { get; set; }
+        public int Stock { get; set; }
         public string? ImageUrl { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public DateTime DateUpdated { get; set; } = DateTime.UtcNow;
