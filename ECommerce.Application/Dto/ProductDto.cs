@@ -16,5 +16,6 @@ namespace ECommerce.Application.Dto
         public int Stock { get; set; }
         public string? ImageUrl { get; set; }
         public Status Status { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
