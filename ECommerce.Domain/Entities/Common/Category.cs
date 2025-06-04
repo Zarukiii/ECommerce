@@ -2,10 +2,10 @@
 {
     public class Category
     {
-        public int Id { get; set; }
-        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public bool IsDeleted { get; set; }
 
-        public ICollection<Product> ParentCategoryProducts { get; set; }
-        public ICollection<Product> SubCategoryProducts { get; set; }
+        public ICollection<Product>? Product { get; set; }
     }
 }

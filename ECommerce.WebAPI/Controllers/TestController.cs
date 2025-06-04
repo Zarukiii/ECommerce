@@ -35,12 +35,16 @@ namespace ECommerce.WebAPI.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult> GetProductById(int id)
         {
-            var product = await _productQueryService.GetProductById(id);
+            try
+            {
+                var product = await _productQueryService.GetProductById(id);
 
-            if (product == null)
+                return Ok(product);
+            }
+            catch
+            {
                 return NotFound();
-
-            return Ok(product);
+            }
         }
 
         [HttpPost("[action]")]
@@ -54,7 +58,7 @@ namespace ECommerce.WebAPI.Controllers
         [HttpPut("[action]")]
         public async Task<ActionResult> UpdateProduct([FromBody] ProductDto product, int id)
         {
-            if (id == null)
+            if (id == 0)
                 return NotFound();
 
             await _productCommandService.UpdateProduct(product, id);
@@ -65,12 +69,19 @@ namespace ECommerce.WebAPI.Controllers
         [HttpDelete("[action]")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            if (id == null)
-                return NotFound();
+            try
+            {
+                if (id == 0)
+                    return NotFound();
 
-            await _productCommandService.DeleteProduct(id);
+                await _productCommandService.DeleteProduct(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

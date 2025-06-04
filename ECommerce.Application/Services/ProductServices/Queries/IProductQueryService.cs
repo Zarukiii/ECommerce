@@ -4,8 +4,8 @@ namespace ECommerce.Application.Services.ProductServices.Queries
 {
     public interface IProductQueryService
     {
-        public Task<IEnumerable<ProductDto>> GetAllProducts();
-        public Task<ProductDto> GetProductById(int id);
-        public Task<IEnumerable<ProductDto>> GetActiveProducts();
+        Task<IEnumerable<ProductDto>> GetAllProducts();
+        Task<ProductDto> GetProductById(int id);
+        Task<IEnumerable<ProductDto>> GetActiveProducts();
     }
 }

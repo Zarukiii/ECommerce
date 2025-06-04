@@ -14,16 +14,16 @@ namespace ECommerce.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .HasOne(p => p.ParentCategory)
-                .WithMany(c => c.ParentCategoryProducts)
-                .HasForeignKey(p => p.ParentCategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Product)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.SubCategory)
-                .WithMany(c => c.SubCategoryProducts)
-                .HasForeignKey(p => p.SubCategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Product>()
+            //    .HasOne(p => p.SubCategory)
+            //    .WithMany(c => c.SubCategoryProducts)
+            //    .HasForeignKey(p => p.SubCategoryId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Product>()
                 .Property(p => p.Status)

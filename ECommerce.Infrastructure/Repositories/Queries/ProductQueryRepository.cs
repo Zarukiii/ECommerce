@@ -13,7 +13,7 @@ namespace ECommerce.Infrastructure.Repositories.Queries
         public async Task<IEnumerable<Product>> GetAllActiveAsync()
         {
             var products = await _appDbContext.Products
-                .Where(p => p.isDeleted != true)
+                .Where(p => p.IsDeleted != true)
                 .ToListAsync();
 
             return products;

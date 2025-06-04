@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using ECommerce.Application.Dto;
+﻿using ECommerce.Application.Dto;
 using ECommerce.Application.Interfaces.Queries;
-using ECommerce.Domain.Entities;
 
 namespace ECommerce.Application.Services.ProductServices.Queries
 {
@@ -18,8 +16,7 @@ namespace ECommerce.Application.Services.ProductServices.Queries
             var activeProductsDto = activeProducts.Select(product => new ProductDto
             {
                 Name = product.Name,
-                ParentCategoryId = product.ParentCategoryId,
-                SubCategoryId = product.SubCategoryId,
+                CategoryId = product.CategoryId,
                 Price = product.Price,
                 Stock = product.Stock,
                 Status = product.Status,
@@ -35,8 +32,7 @@ namespace ECommerce.Application.Services.ProductServices.Queries
             var productsDto = products.Select(product => new ProductDto
             {
                 Name = product.Name,
-                ParentCategoryId = product.ParentCategoryId,
-                SubCategoryId = product.SubCategoryId,
+                CategoryId = product.CategoryId,
                 Price = product.Price,
                 Stock = product.Stock,
                 Status = product.Status,
@@ -52,8 +48,7 @@ namespace ECommerce.Application.Services.ProductServices.Queries
             ProductDto productDto = new ProductDto
             {
                 Name = product.Name,
-                ParentCategoryId = product.ParentCategoryId,
-                SubCategoryId = product.SubCategoryId,
+                CategoryId = product.CategoryId,
                 Price = product.Price,
                 Stock = product.Stock,
                 Status = product.Status,

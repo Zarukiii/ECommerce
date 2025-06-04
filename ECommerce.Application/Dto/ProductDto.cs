@@ -9,9 +9,8 @@ namespace ECommerce.Application.Dto
 {
     public class ProductDto
     {
-        public string Name { get; set; }
-        public int ParentCategoryId { get; set; }
-        public int SubCategoryId { get; set; }
+        public required string Name { get; set; }
+        public int CategoryId { get; set; }
         public double Price { get; set; }
         public int Stock { get; set; }
         public string? ImageUrl { get; set; }

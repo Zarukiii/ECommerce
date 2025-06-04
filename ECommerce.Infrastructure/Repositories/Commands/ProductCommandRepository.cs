@@ -27,14 +27,14 @@ namespace ECommerce.Infrastructure.Repositories.Commands
 
         public async Task DeleteProductAsync(int id)
         {
-            var product = _appDbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
 
             if (product == null)
                 throw new KeyNotFoundException();
 
-            var productEntry = _appDbContext.Products.Entry(await product);
+            var productEntry = _appDbContext.Products.Entry(product);
 
-            productEntry.Property("isDeleted").CurrentValue = true;
+            productEntry.Property("IsDeleted").CurrentValue = true;
             productEntry.Property("DateUpdated").CurrentValue = DateTime.Now;
             productEntry.Property("Status").CurrentValue = 4;
 

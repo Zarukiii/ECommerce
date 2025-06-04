@@ -1,5 +1,7 @@
 ﻿using ECommerce.Application.Interfaces.Commands;
 using ECommerce.Application.Interfaces.Queries;
+using ECommerce.Application.Services.CategoryServices.Commands;
+using ECommerce.Application.Services.CategoryServices.Queries;
 using ECommerce.Application.Services.ProductServices.Commands;
 using ECommerce.Application.Services.ProductServices.Queries;
 using ECommerce.Infrastructure.Data;
@@ -20,7 +22,10 @@ namespace ECommerce.Infrastructure.DependencyInjection
             services.AddScoped<IProductCommandService, ProductCommandService>();
             services.AddScoped<IProductQueryService, ProductQueryService>();
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<ICategoryQueryRepository, CategoryQueryRepository>();
+            services.AddScoped<ICategoryQueryService, CategoryQueryService>();
+            services.AddScoped<ICategoryCommandRepository, CategoryCommandRepository>();
+            services.AddScoped<ICategoryCommandService, CategoryCommandService>();
 
             services.AddDbContext<AppDbContext>(options =>
             
