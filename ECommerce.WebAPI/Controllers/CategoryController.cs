@@ -10,7 +10,7 @@ namespace ECommerce.WebAPI.Controllers
     public class CategoryController(
         ICategoryQueryService queryService,
         ICategoryCommandService commandService
-        ) : ControllerBase
+    ) : ControllerBase
     {
         ICategoryQueryService _queryService = queryService;
         ICategoryCommandService _commandService = commandService;
@@ -28,7 +28,6 @@ namespace ECommerce.WebAPI.Controllers
             {
                 return NotFound();
             }
-
         }
 
         [HttpGet("[action]")]

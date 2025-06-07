@@ -21,12 +21,12 @@ namespace ECommerce.Application.Services.CategoryServices.Commands
                 IsDeleted = categoryDto.IsDeleted
             };
 
-            await _commandRepository.CreateCategory(category);
+            await _commandRepository.CreateCategoryAsync(category);
         }
 
         public async Task DeleteCategory(int id)
         {
-            await _commandRepository.DeleteCategory(id);
+            await _commandRepository.DeleteCategoryAsync(id);
         }
 
         public async Task UpdateCategory(CategoryDto categoryDto, int id)
@@ -39,7 +39,7 @@ namespace ECommerce.Application.Services.CategoryServices.Commands
             category.Name = categoryDto.CategoryName;
             category.IsDeleted = categoryDto.IsDeleted;
 
-            await _commandRepository.UpdateCategory(category);
+            await _commandRepository.UpdateCategoryAsync(category);
         }
     }
 }

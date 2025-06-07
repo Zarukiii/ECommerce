@@ -19,12 +19,6 @@ namespace ECommerce.Infrastructure.Data
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder.Entity<Product>()
-            //    .HasOne(p => p.SubCategory)
-            //    .WithMany(c => c.SubCategoryProducts)
-            //    .HasForeignKey(p => p.SubCategoryId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<Product>()
                 .Property(p => p.Status)
                 .HasConversion<string>();

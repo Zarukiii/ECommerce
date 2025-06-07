@@ -5,7 +5,7 @@ namespace ECommerce.Application.Services.ProductServices.Queries
 {
     public class ProductQueryService(
         IProductQueryRepository queryRepository
-        ) : IProductQueryService
+    ) : IProductQueryService
     {
         private readonly IProductQueryRepository _queryRepository = queryRepository;
 
@@ -13,14 +13,15 @@ namespace ECommerce.Application.Services.ProductServices.Queries
         {
             var activeProducts = await _queryRepository.GetAllActiveAsync();
 
-            var activeProductsDto = activeProducts.Select(product => new ProductDto
-            {
-                Name = product.Name,
-                CategoryId = product.CategoryId,
-                Price = product.Price,
-                Stock = product.Stock,
-                Status = product.Status,
-            });
+            var activeProductsDto = activeProducts.Select(
+                product => new ProductDto
+                {
+                    Name = product.Name,
+                    CategoryId = product.CategoryId,
+                    Price = product.Price,
+                    Stock = product.Stock,
+                    Status = product.Status,
+                });
 
             return activeProductsDto;
         }
@@ -29,14 +30,15 @@ namespace ECommerce.Application.Services.ProductServices.Queries
         {
             var products = await _queryRepository.GetAllProductsAsync();
 
-            var productsDto = products.Select(product => new ProductDto
-            {
-                Name = product.Name,
-                CategoryId = product.CategoryId,
-                Price = product.Price,
-                Stock = product.Stock,
-                Status = product.Status,
-            });
+            var productsDto = products.Select(
+                product => new ProductDto
+                {
+                    Name = product.Name,
+                    CategoryId = product.CategoryId,
+                    Price = product.Price,
+                    Stock = product.Stock,
+                    Status = product.Status,
+                });
 
             return productsDto;
         }

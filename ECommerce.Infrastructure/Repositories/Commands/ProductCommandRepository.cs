@@ -1,13 +1,17 @@
 ﻿using ECommerce.Application.Interfaces.Commands;
+using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Domain.Entities;
 using ECommerce.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Repositories.Commands
 {
-    public class ProductCommandRepository(AppDbContext appDbContext) : IProductCommandRepository
+    public class ProductCommandRepository(
+        AppDbContext appDbContext,
+        IProductQueryRepository queryRepository
+    ) : IProductCommandRepository
     {
         private readonly AppDbContext _appDbContext = appDbContext;
+        private readonly IProductQueryRepository _queryRepository = queryRepository;
 
         public async Task CreateProductAsync(Product product)
         {
@@ -27,7 +31,7 @@ namespace ECommerce.Infrastructure.Repositories.Commands
 
         public async Task DeleteProductAsync(int id)
         {
-            var product = await _appDbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _queryRepository.GetProductByIdAsync(id);
 
             if (product == null)
                 throw new KeyNotFoundException();

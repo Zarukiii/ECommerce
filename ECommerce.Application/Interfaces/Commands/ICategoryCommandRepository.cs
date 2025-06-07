@@ -9,8 +9,8 @@ namespace ECommerce.Application.Interfaces.Commands
 {
     public interface ICategoryCommandRepository
     {
-        Task CreateCategory(Category category);
-        Task UpdateCategory(Category category);
-        Task DeleteCategory(int id);
+        Task CreateCategoryAsync(Category category);
+        Task UpdateCategoryAsync(Category category);
+        Task DeleteCategoryAsync(int id);
     }
 }

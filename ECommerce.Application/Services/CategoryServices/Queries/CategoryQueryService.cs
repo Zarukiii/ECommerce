@@ -5,7 +5,7 @@ namespace ECommerce.Application.Services.CategoryServices.Queries
 {
     public class CategoryQueryService(
         ICategoryQueryRepository queryRepository
-        ) : ICategoryQueryService
+    ) : ICategoryQueryService
     {
         private readonly ICategoryQueryRepository _queryRepository = queryRepository;
         public async Task<IEnumerable<CategoryDto>> GetCategories()

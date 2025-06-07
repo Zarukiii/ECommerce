@@ -1,9 +1,6 @@
 ﻿using ECommerce.Application.Dto;
-using ECommerce.Application.Interfaces.Commands;
-using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Application.Services.ProductServices.Commands;
 using ECommerce.Application.Services.ProductServices.Queries;
-using ECommerce.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.WebAPI.Controllers
@@ -12,8 +9,8 @@ namespace ECommerce.WebAPI.Controllers
     [ApiController]
     public class TestController(
         IProductCommandService productCommandService,
-        IProductQueryService productQueryService) 
-        : ControllerBase
+        IProductQueryService productQueryService
+    ) : ControllerBase
     {
         private readonly IProductCommandService _productCommandService = productCommandService;
         private readonly IProductQueryService _productQueryService = productQueryService;

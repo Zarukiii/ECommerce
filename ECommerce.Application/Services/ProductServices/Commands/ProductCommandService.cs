@@ -8,7 +8,7 @@ namespace ECommerce.Application.Services.ProductServices.Commands
     public class ProductCommandService(
         IProductCommandRepository productCommandRepository, 
         IProductQueryRepository productQueryRepository
-        ) : IProductCommandService
+    ) : IProductCommandService
     {
         private readonly IProductCommandRepository _productCommandRepository = productCommandRepository;
         private readonly IProductQueryRepository _productQueryRepository = productQueryRepository;

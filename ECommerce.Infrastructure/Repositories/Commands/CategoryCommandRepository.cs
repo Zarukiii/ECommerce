@@ -2,7 +2,6 @@
 using ECommerce.Application.Interfaces.Queries;
 using ECommerce.Domain.Entities.Common;
 using ECommerce.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Repositories.Commands
 {
@@ -13,21 +12,21 @@ namespace ECommerce.Infrastructure.Repositories.Commands
     {
         private readonly AppDbContext _appDbContext = appDbContext;
         private readonly ICategoryQueryRepository _queryRepository = queryRepository;
-        public async Task CreateCategory(Category category)
+        public async Task CreateCategoryAsync(Category category)
         {
             await _appDbContext.Categories.AddAsync(category);
 
             await _appDbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateCategory(Category category)
+        public async Task UpdateCategoryAsync(Category category)
         {
             _appDbContext.Categories.Update(category);
 
             await _appDbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteCategory(int id)
+        public async Task DeleteCategoryAsync(int id)
         {
             var category = await _queryRepository.GetCategoryById(id);
 

@@ -28,7 +28,6 @@ namespace ECommerce.Infrastructure.DependencyInjection
             services.AddScoped<ICategoryCommandService, CategoryCommandService>();
 
             services.AddDbContext<AppDbContext>(options =>
-            
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                 sqlOptions => sqlOptions.MigrationsAssembly("ECommerce.Infrastructure"))
             );
